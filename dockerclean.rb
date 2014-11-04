@@ -28,11 +28,23 @@ module Dockerclean
         end
     end
 
+    def Dockerclean.help
+        puts <<EOH
+Usage:
+    dockerclean <command>
+
+List of available commands:
+    - stopped  : calls 'docker rm' on each container in stopped status
+    - untagged : calls 'docker rmi' on each image that has no assigned name
+    - help     : shows this text
+EOH
+    end
+
     def Dockerclean.method_missing(name)
-        puts "Don't know how to clean '#{name.to_s}'.\nCan clean only 'stopped' or 'untagged'."
+        puts "Don't know how to clean '#{name.to_s}'.\nCan clean only 'stopped' or 'untagged'.\nUse 'dockerclean help' for more info.'"
     end
 
 end
 
-Dockerclean.send(ARGV[0])
+Dockerclean.send(ARGV[0] || :help)
 
