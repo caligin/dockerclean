@@ -2,6 +2,11 @@
 
 module Dockerclean
 
+    def Dockerclean.all
+        Dockerclean.stopped
+        Dockerclean.untagged
+    end
+
     def Dockerclean.stopped
         `docker rm $(docker ps -a -q)`
     end
