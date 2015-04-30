@@ -12,3 +12,5 @@ rm all stopped containers:
 rm all untagged images:
 `./dockerclean.rb untagged`
 
+rm both:
+`./dockerclean.rb all`
